@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MyJobApp</string>
+    <string name="app_name">MY JOB APPLICATION</string>
+    <string name="add_contacts_button_text">Add Contact</string>
+    <string name="add_sender_info_label">Add Sender Information</string>
+    <!-- Sender Fragment strings -->
+    <string name="first_name_label">First Name:</string>
+    <string name="last_name_label">Last Name:</string>
+    <string name="email_id_label">EmailID:</string>
+    <string name="company_label">Company:</string>
+    <string name="location_label">Location:</string>
+    <string name="add_button_text">ADD</string>
+    <string name="cancel_button_text">CANCEL</string>
 </resources>
