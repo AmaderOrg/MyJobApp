@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="application_background_color">#010950</color>
+    <color name="primary_button_color">#e94e8aea</color>
+    <color name="primary_button_text_color">#d8f8f8f9</color>
+    <color name="text_entry_background">#b1000878</color>
+</resources>
