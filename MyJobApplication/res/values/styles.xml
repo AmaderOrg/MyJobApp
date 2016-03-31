@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="application_theme">
+        <item name="android:background">@color/application_background_color</item>
+    </style>
+    <style name="button_theme1">
+        <item name="android:background">@color/primary_button_color</item>
+        <item name="android:textColor">@color/primary_button_text_color</item>
+        <item name="android:textSize">@dimen/primary_button_text_size</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+    </style>
+    <style name="text_label_style1">
+        <item name="android:textSize">@dimen/text_label_size</item>
+        <item name="android:layout_marginBottom">@dimen/text_entry_margin</item>
+    </style>
+    <style name="text_entry_style1">
+        <item name="android:background">@color/text_entry_background</item>
+        <item name="android:textSize">@dimen/text_entry_size</item>
+        <item name="android:layout_marginBottom">@dimen/text_entry_margin</item>
+    </style>
+</resources>
