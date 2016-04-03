@@ -12,10 +12,12 @@ import android.net.Uri;
 import com.amaderorg.myjobapp.Model.Database.Tables.ContactsTableSchema;
 
 /**
- * Created by souvi_000 on 3/30/2016.
+ * This class provides database manipulation functions
  */
 public class ApplicationContentProvider extends ContentProvider {
-    private static SQLiteDatabase mSQLiteDatabase;
+    /**
+     * Database common constants
+     */
     private static final String PROVIDER_NAME = "com.amaderorg.myjobapp";
     private static final String PROVIDER_DIR_PATH = "vnd.android.cursor.dir/";
     private static final String CONTACTS_TABLE_URL = "content://" + PROVIDER_NAME + "/" +
@@ -23,11 +25,19 @@ public class ApplicationContentProvider extends ContentProvider {
     public static final Uri CONTACTS_TABLE_URI = Uri.parse(CONTACTS_TABLE_URL);
 
     /**
+     * SQLite Database
+     */
+    private static SQLiteDatabase mSQLiteDatabase;
+
+    /**
      * Holds Uri code
      */
     private static final int CONTACTS_URI_CODE = 1;
-    private static final UriMatcher URI_MATCHER;
 
+    /**
+     * Uri matcher to help matching Uris
+     */
+    private static final UriMatcher URI_MATCHER;
     static {
         URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
         URI_MATCHER.addURI(PROVIDER_NAME, ContactsTableSchema.ContactEntry.TABLE_NAME, CONTACTS_URI_CODE);
@@ -101,6 +111,11 @@ public class ApplicationContentProvider extends ContentProvider {
         return 0;
     }
 
+    /**
+     * Getter method for the satabase
+     *
+     * @return SQLite database
+     */
     public SQLiteDatabase getDatabase () {
         return mSQLiteDatabase;
     }

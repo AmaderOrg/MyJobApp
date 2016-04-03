@@ -1,7 +1,9 @@
-package com.amaderorg.myjobapp;
+package com.amaderorg.myjobapp.View;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.amaderorg.myjobapp.R;
 
 public class LaunchActivity extends Activity {
     /**
