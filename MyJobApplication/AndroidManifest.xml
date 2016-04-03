@@ -21,5 +21,10 @@
             android:exported="false"
             android:multiprocess="true">
         </provider>
+        <activity android:name=".View.WorkflowSelection.WorkflowSelectionActivity"
+                  android:label="Workflow Selection"
+                  android:screenOrientation="portrait">
+            
+        </activity>
     </application>
 </manifest>
