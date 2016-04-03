@@ -4,13 +4,22 @@
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="21"/>
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
-        <activity android:name="LaunchActivity"
-                  android:label="@string/app_name">
+    <application android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/application_theme">
+        <activity android:name=".View.LaunchActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.amaderorg.myjobapp"
+            android:name=".Model.Database.ApplicationContentProvider"
+            android:exported="false"
+            android:multiprocess="true">
+        </provider>
     </application>
 </manifest>
