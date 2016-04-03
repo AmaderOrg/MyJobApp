@@ -6,6 +6,8 @@ import android.os.Bundle;
 import com.amaderorg.myjobapp.R;
 import com.amaderorg.myjobapp.View.WorkflowSelection.WorkflowSelectionActivity;
 
+import com.amaderorg.myjobapp.R;
+
 public class LaunchActivity extends Activity {
     /**
      * Called when the activity is first created.

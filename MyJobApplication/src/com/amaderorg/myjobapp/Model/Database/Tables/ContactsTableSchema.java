@@ -12,12 +12,12 @@ public final class ContactsTableSchema {
 
     /* Inner class that defines the table contents */
     public static abstract class ContactEntry implements BaseColumns {
-        public static final String TABLE_NAME = "SenderContactTable";
+        public static final String TABLE_NAME = "ContactTable";
         public static final String CONTACT_ID = "ContactId";
         public static final String FIRST_NAME = "ContactFirstName";
         public static final String LAST_NAME = "ContactLastName";
         public static final String COMPANY = "CompanyName";
         public static final String LOCATION = "ContactLocation";
-        public static final String EMAIL_ID = "ContactEmailId";
+        public static final String EMAIL_ADDRESS = "EmailAddress";
     }
 }
