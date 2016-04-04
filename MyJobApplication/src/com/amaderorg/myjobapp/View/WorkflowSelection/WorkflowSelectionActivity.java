@@ -1,8 +1,17 @@
 package com.amaderorg.myjobapp.View.WorkflowSelection;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import com.amaderorg.myjobapp.Model.Constants.Constants;
+import com.amaderorg.myjobapp.R;
+import com.amaderorg.myjobapp.View.Contacts.ManageContactsActivity;
+import com.amaderorg.myjobapp.View.MassEmail.MassEmailActivity;
+import com.amaderorg.myjobapp.View.Templates.ManageTemplatesActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Workflow selection activity.
@@ -12,6 +21,21 @@ public class WorkflowSelectionActivity extends Activity {
      * View
      */
     private View mView;
+    /**
+     * Map between action and activity.
+     */
+    private Map<String, Class> mMapActionAndActivity = new HashMap<>();
+
+    /**
+     * Workflow action item selection listener
+     */
+    private IWorkflowSelectionListener mListener = new IWorkflowSelectionListener() {
+        @Override
+        public void onWorkflowSelect(String action) {
+            System.out.println("Action: " + action);
+            chooseActivity(action);
+        }
+    };
 
     /**
      * Called when the activity is starting.  This is where most initialization
@@ -41,8 +65,29 @@ public class WorkflowSelectionActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WorkflowSelectionView workflowSelectionView = new WorkflowSelectionView(getApplicationContext());
+        WorkflowSelectionView workflowSelectionView = new WorkflowSelectionView(getApplicationContext(), mListener);
         mView = workflowSelectionView.getView();
         setContentView(mView);
+        populateMap();
+    }
+
+    /**
+     * This populates the map between action and their corresponding activities.
+     */
+    private void populateMap() {
+        mMapActionAndActivity.put(getString(R.string.manage_templates), ManageTemplatesActivity.class);
+        mMapActionAndActivity.put(getString(R.string.send_email), MassEmailActivity.class);
+        mMapActionAndActivity.put(getString(R.string.manage_contacts), ManageContactsActivity.class);
+    }
+
+    /**
+     * This method chooses the activity to navigate to based on the action.
+     *
+     * @param action Action to be performed.
+     */
+    private void chooseActivity(String action) {
+        Intent intent = new Intent(WorkflowSelectionActivity.this, mMapActionAndActivity.get(action));
+        intent.putExtra(Constants.ACTION_NAME, action);
+        startActivity(intent);
     }
 }
