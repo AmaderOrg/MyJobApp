@@ -15,6 +15,27 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".View.WorkflowSelection.WorkflowSelectionActivity"
+                  android:label="Workflow Selection"
+                  android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".View.Contacts.ManageContactsActivity"
+                  android:label="Manage Contacts"
+                  android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".View.MassEmail.MassEmailActivity"
+                  android:label="Send Email"
+                  android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".View.Templates.ManageTemplatesActivity"
+                  android:label="Manage Templates"
+                  android:screenOrientation="portrait">
+
+        </activity>
+
         <provider
             android:authorities="com.amaderorg.myjobapp"
             android:name=".Model.Database.ApplicationContentProvider"
