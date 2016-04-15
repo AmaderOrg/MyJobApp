@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:textSize="15dp"
         style="@style/text_label_style1"
-        android:text="@string/email_id_label"/>
+        android:text="@string/email_address_label"/>
     <EditText
         android:id="@+id/et_email_id"
         android:layout_width="match_parent"

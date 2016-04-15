@@ -12,15 +12,22 @@ import android.net.Uri;
 import com.amaderorg.myjobapp.Model.Database.Tables.ContactsTableSchema;
 
 /**
- * Created by souvi_000 on 3/30/2016.
+ * This class provides database manipulation functions
  */
 public class ApplicationContentProvider extends ContentProvider {
-    private static SQLiteDatabase mSQLiteDatabase;
+    /**
+     * Database common constants
+     */
     private static final String PROVIDER_NAME = "com.amaderorg.myjobapp";
     private static final String PROVIDER_DIR_PATH = "vnd.android.cursor.dir/";
     private static final String CONTACTS_TABLE_URL = "content://" + PROVIDER_NAME + "/" +
             ContactsTableSchema.ContactEntry.TABLE_NAME;
     public static final Uri CONTACTS_TABLE_URI = Uri.parse(CONTACTS_TABLE_URL);
+
+    /**
+     * SQLite Database
+     */
+    private static SQLiteDatabase mSQLiteDatabase;
 
     /**
      * Holds Uri code
