@@ -3,7 +3,8 @@
     <string name="app_name">MY JOB APPLICATION</string>
     <string name="add_contacts_button_text">Add Contact</string>
     <string name="add_sender_info_label">Add Sender Information</string>
-    <!-- Sender Fragment strings -->
+
+    <!-- Contact Fragment strings -->
     <string name="first_name_label">First Name:</string>
     <string name="last_name_label">Last Name:</string>
     <string name="email_id_label">EmailID:</string>
@@ -11,4 +12,9 @@
     <string name="location_label">Location:</string>
     <string name="add_button_text">ADD</string>
     <string name="cancel_button_text">CANCEL</string>
+
+    <!-- Workflow selection strings -->
+    <string name="manage_templates">Manage Templates</string>
+    <string name="send_email">Send Email</string>
+    <string name="manage_contacts">Manage Contacts</string>
 </resources>

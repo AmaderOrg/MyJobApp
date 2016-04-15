@@ -1,7 +1,10 @@
 package com.amaderorg.myjobapp.View;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import com.amaderorg.myjobapp.R;
+import com.amaderorg.myjobapp.View.WorkflowSelection.WorkflowSelectionActivity;
 
 import com.amaderorg.myjobapp.R;
 
@@ -12,6 +15,7 @@ public class LaunchActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        Intent intent = new Intent(this, WorkflowSelectionActivity.class);
+        startActivity(intent);
     }
 }
