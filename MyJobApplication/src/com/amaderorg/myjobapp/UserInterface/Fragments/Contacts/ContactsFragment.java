@@ -1,4 +1,4 @@
-package com.amaderorg.myjobapp.View;
+package com.amaderorg.myjobapp.UserInterface.Fragments.Contacts;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -10,9 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.amaderorg.myjobapp.Model.Database.Tables.Contact;
 import com.amaderorg.myjobapp.Presenter.Contacts.IContactInformationPresenter;
 import com.amaderorg.myjobapp.Presenter.Contacts.ContactInformationPresenter;
 import com.amaderorg.myjobapp.R;
+import com.amaderorg.myjobapp.UserInterface.Views.Contacts.AddSenderInformationView;
+import com.amaderorg.myjobapp.UserInterface.Views.Contacts.SenderInformationView;
 
 /**
  * Created by souvi_000 on 3/28/2016.
@@ -163,14 +166,22 @@ public class ContactsFragment extends Fragment implements Button.OnClickListener
                 mContainer.addView(mAddSenderView);
                 break;
             case R.id.button_add_sender_info:
-                mSenderInfoPresenter.addSenderInformation(mFirstName,
+                mSenderInfoPresenter.addContactInformation(getContactObject(mFirstName,
                         mLastName,
                         mCompanyName,
                         mLocation,
-                        mEmailId);
+                        mEmailId));
                 break;
             case R.id.button_cancel_sender_info:
                 break;
         }
+    }
+
+    private Contact getContactObject(String firstName,
+                                     String lastName,
+                                     String companyName,
+                                     int location,
+                                     String emailId) {
+        return new Contact(firstName, lastName, companyName, location, emailId);
     }
 }

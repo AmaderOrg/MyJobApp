@@ -1,12 +1,10 @@
-package com.amaderorg.myjobapp.View;
+package com.amaderorg.myjobapp.UserInterface.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.amaderorg.myjobapp.R;
-import com.amaderorg.myjobapp.View.WorkflowSelection.WorkflowSelectionActivity;
 
-import com.amaderorg.myjobapp.R;
+import com.amaderorg.myjobapp.UserInterface.Activities.WorkflowSelection.WorkflowSelectionActivity;
 
 public class LaunchActivity extends Activity {
     /**

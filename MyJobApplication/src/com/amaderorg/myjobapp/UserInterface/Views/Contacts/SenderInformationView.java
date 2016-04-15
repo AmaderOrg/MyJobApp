@@ -1,9 +1,8 @@
-package com.amaderorg.myjobapp.View;
+package com.amaderorg.myjobapp.UserInterface.Views.Contacts;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Button.*;
 import android.widget.LinearLayout;
 
 import com.amaderorg.myjobapp.R;

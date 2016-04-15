@@ -1,10 +1,11 @@
-package com.amaderorg.myjobapp.View.WorkflowSelection;
+package com.amaderorg.myjobapp.UserInterface.Views.WorkflowSelection;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
 import com.amaderorg.myjobapp.R;
+import com.amaderorg.myjobapp.Presenter.WorkflowSelection.IWorkflowSelectionListener;
 
 import java.util.HashMap;
 import java.util.Map;

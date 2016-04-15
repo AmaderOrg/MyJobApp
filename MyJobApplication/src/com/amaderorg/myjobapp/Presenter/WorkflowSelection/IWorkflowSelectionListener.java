@@ -1,4 +1,4 @@
-package com.amaderorg.myjobapp.View.WorkflowSelection;
+package com.amaderorg.myjobapp.Presenter.WorkflowSelection;
 
 /**
  * Workflow selection action listener.

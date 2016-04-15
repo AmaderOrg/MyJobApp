@@ -3,7 +3,7 @@ package com.amaderorg.myjobapp.Model.Constants;
 /**
  * This class holds the constants.
  */
-public class Constants {
+public class CommonConstants {
     /**
      * Workflow action name
      */

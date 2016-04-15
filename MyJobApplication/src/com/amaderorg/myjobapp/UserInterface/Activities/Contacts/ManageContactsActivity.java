@@ -1,15 +1,21 @@
-package com.amaderorg.myjobapp.View.Contacts;
+package com.amaderorg.myjobapp.UserInterface.Activities.Contacts;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.widget.AbsListView;
+import android.widget.FrameLayout;
+import android.widget.RadioGroup;
 import android.widget.Toast;
-import com.amaderorg.myjobapp.Model.Constants.Constants;
-import com.amaderorg.myjobapp.R;
+import com.amaderorg.myjobapp.Model.Constants.CommonConstants;
+import com.amaderorg.myjobapp.UserInterface.Fragments.Contacts.ContactsFragment;
 
 /**
  * Please remember to update the class description when this feature is implemented.
  */
 public class ManageContactsActivity extends Activity {
+    private static final int CONTENT_VIEW_ID = 10101010;
     /**
      * Called when the activity is starting.  This is where most initialization
      * should go: calling {@link #setContentView(int)} to inflate the
@@ -38,8 +44,17 @@ public class ManageContactsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        Toast.makeText(getApplicationContext(), getIntent().getExtras().getString(Constants.ACTION_NAME),
+        Toast.makeText(getApplicationContext(), getIntent().getExtras().getString(CommonConstants.ACTION_NAME),
                 Toast.LENGTH_SHORT).show();
+        FrameLayout frame = new FrameLayout(this);
+        frame.setId(CONTENT_VIEW_ID);
+        setContentView(frame, new RadioGroup.LayoutParams(
+                RadioGroup.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT));
+
+        if (savedInstanceState == null) {
+            Fragment newFragment = new ContactsFragment();
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.add(CONTENT_VIEW_ID, newFragment).commit();
+        }
     }
 }

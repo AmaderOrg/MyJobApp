@@ -7,7 +7,7 @@
     <application android:label="@string/app_name"
         android:icon="@drawable/ic_launcher"
         android:theme="@style/application_theme">
-        <activity android:name=".View.LaunchActivity"
+        <activity android:name=".UserInterface.Activities.LaunchActivity"
                   android:label="@string/app_name"
                   android:screenOrientation="portrait">
             <intent-filter>
@@ -15,22 +15,22 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".View.WorkflowSelection.WorkflowSelectionActivity"
+        <activity android:name=".UserInterface.Activities.WorkflowSelection.WorkflowSelectionActivity"
                   android:label="Workflow Selection"
                   android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".View.Contacts.ManageContactsActivity"
+        <activity android:name=".UserInterface.Activities.Contacts.ManageContactsActivity"
                   android:label="Manage Contacts"
                   android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".View.MassEmail.MassEmailActivity"
+        <activity android:name=".UserInterface.Activities.MassEmail.MassEmailActivity"
                   android:label="Send Email"
                   android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".View.Templates.ManageTemplatesActivity"
+        <activity android:name=".UserInterface.Activities.Templates.ManageTemplatesActivity"
                   android:label="Manage Templates"
                   android:screenOrientation="portrait">
 

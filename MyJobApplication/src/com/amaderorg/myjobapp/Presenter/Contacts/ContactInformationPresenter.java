@@ -3,7 +3,7 @@ package com.amaderorg.myjobapp.Presenter.Contacts;
 import android.content.Context;
 
 import com.amaderorg.myjobapp.Model.Database.DBManager;
-import com.amaderorg.myjobapp.Model.Database.Tables.ContactInformation;
+import com.amaderorg.myjobapp.Model.Database.Tables.Contact;
 
 /**
  * Created by souvi_000 on 3/28/2016.
@@ -16,11 +16,7 @@ public class ContactInformationPresenter implements IContactInformationPresenter
     }
 
     @Override
-    public void addSenderInformation(String firstName,
-                                     String lastName,
-                                     String company,
-                                     int location,
-                                     String email) {
-        manager.addSenderContact(new ContactInformation(firstName, lastName, company, location, email));
+    public void addContactInformation(Contact contact) {
+        manager.addContact(contact);
     }
 }

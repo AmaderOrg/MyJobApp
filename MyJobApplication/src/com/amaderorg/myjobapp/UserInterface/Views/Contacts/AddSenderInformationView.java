@@ -1,4 +1,4 @@
-package com.amaderorg.myjobapp.View;
+package com.amaderorg.myjobapp.UserInterface.Views.Contacts;
 
 import android.content.Context;
 import android.text.TextWatcher;
