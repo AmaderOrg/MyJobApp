@@ -2,27 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="@dimen/outer_gutter_size"
-    android:layout_marginEnd="@dimen/outer_gutter_size"
-    android:layout_marginTop="@dimen/outer_gutter_size"
-    android:layout_marginBottom="@dimen/outer_gutter_size">
+    android:layout_marginStart="@dimen/text_entry_margin"
+    android:layout_marginEnd="@dimen/text_entry_margin"
+    android:layout_marginTop="@dimen/text_entry_margin"
+    android:layout_marginBottom="@dimen/text_entry_margin">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/add_sender_info_label"
-        android:textSize="25dp"/>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/primary_button_text_color"/>
     <!-- First Name-->
     <TextView
         android:layout_width="wrap_content"

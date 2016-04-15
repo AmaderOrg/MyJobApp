@@ -5,6 +5,8 @@ import android.content.Context;
 import com.amaderorg.myjobapp.Model.Database.DBManager;
 import com.amaderorg.myjobapp.Model.Database.Tables.Contact;
 
+import java.util.List;
+
 /**
  * Created by souvi_000 on 3/28/2016.
  */
@@ -18,5 +20,10 @@ public class ContactInformationPresenter implements IContactInformationPresenter
     @Override
     public void addContactInformation(Contact contact) {
         manager.addContact(contact);
+    }
+
+    @Override
+    public List<Contact> getContactList() {
+        return manager.getAllContacts();
     }
 }

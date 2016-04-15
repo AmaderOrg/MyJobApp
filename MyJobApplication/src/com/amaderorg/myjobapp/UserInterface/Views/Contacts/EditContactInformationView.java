@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by souvi_000 on 3/28/2016.
  */
-public class AddSenderInformationView extends LinearLayout {
+public class EditContactInformationView extends LinearLayout {
     private Button mAddSenderInfoButton;
     private Button mCancelSenderInfoButton;
     private EditText mFirstName;
@@ -25,7 +25,7 @@ public class AddSenderInformationView extends LinearLayout {
     private EditText mEmailId;
     private List<OnClickListener> mListeners;
 
-    public AddSenderInformationView(Context context) {
+    public EditContactInformationView(Context context) {
         super(context);
         View view = View.inflate(context, R.layout.add_sender_info_view, this);
 

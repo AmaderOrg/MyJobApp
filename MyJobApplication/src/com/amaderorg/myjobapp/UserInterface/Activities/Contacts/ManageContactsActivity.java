@@ -57,4 +57,9 @@ public class ManageContactsActivity extends Activity {
             ft.add(CONTENT_VIEW_ID, newFragment).commit();
         }
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+    }
 }

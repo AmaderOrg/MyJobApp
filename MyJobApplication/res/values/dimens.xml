@@ -2,9 +2,13 @@
 <resources>
     <dimen name="primary_button_text_size">16dp</dimen>
     <dimen name="outer_gutter_size">20dp</dimen>
+    <dimen name="table_top_margin">40dp</dimen>
     <dimen name="text_entry_margin">10dp</dimen>
     <dimen name="text_label_size">16dp</dimen>
     <dimen name="text_entry_size">24dp</dimen>
+    <dimen name="text_list_entry_size">12dp</dimen>
     <dimen name="text_button_padding">15dp</dimen>
     <dimen name="text_button_margin">15dp</dimen>
+    <dimen name="button_side_margin">5dp</dimen>
+    <dimen name="view_bottom_margin_for_buttons">55dp</dimen>
 </resources>

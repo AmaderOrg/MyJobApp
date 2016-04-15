@@ -14,15 +14,15 @@ import com.amaderorg.myjobapp.Model.Database.Tables.Contact;
 import com.amaderorg.myjobapp.Presenter.Contacts.IContactInformationPresenter;
 import com.amaderorg.myjobapp.Presenter.Contacts.ContactInformationPresenter;
 import com.amaderorg.myjobapp.R;
-import com.amaderorg.myjobapp.UserInterface.Views.Contacts.AddSenderInformationView;
-import com.amaderorg.myjobapp.UserInterface.Views.Contacts.SenderInformationView;
+import com.amaderorg.myjobapp.UserInterface.Views.Contacts.EditContactInformationView;
+import com.amaderorg.myjobapp.UserInterface.Views.Contacts.ContactInformationView;
 
 /**
  * Created by souvi_000 on 3/28/2016.
  */
 public class ContactsFragment extends Fragment implements Button.OnClickListener {
-    private SenderInformationView mSenderDetailsView;
-    private AddSenderInformationView mAddSenderView;
+    private ContactInformationView mSenderDetailsView;
+    private EditContactInformationView mAddSenderView;
     private Context mContext;
     private ViewGroup mContainer;
     private IContactInformationPresenter mSenderInfoPresenter;
@@ -44,12 +44,19 @@ public class ContactsFragment extends Fragment implements Button.OnClickListener
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        // refresh view
+        mSenderDetailsView.populateContactList(mSenderInfoPresenter.getContactList());
+    }
+
+    @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View mainView;
         mainView = inflater.inflate(R.layout.contacts_frag,container,false);
         initTextWatchers();
-        mSenderDetailsView = new SenderInformationView(mContext);
-        mAddSenderView = new AddSenderInformationView(mContext);
+        mSenderDetailsView = new ContactInformationView(mContext);
+        mAddSenderView = new EditContactInformationView(mContext);
         mContainer = (ViewGroup)mainView.findViewById(R.id.rl_contacts_container);
         mContainer.addView(mSenderDetailsView);
         mSenderDetailsView.addButtonClickListener(this);
@@ -154,7 +161,7 @@ public class ContactsFragment extends Fragment implements Button.OnClickListener
 
     @Override
     public void onPause() {
-
+        super.onPause();
     }
 
     @Override
@@ -173,6 +180,12 @@ public class ContactsFragment extends Fragment implements Button.OnClickListener
                         mEmailId));
                 break;
             case R.id.button_cancel_sender_info:
+                mContainer.removeAllViews();
+                mContainer.addView(mSenderDetailsView);
+                mSenderDetailsView.populateContactList(mSenderInfoPresenter.getContactList());
+                break;
+            case R.id.button_cancel_contact_details:
+                getActivity().finish();
                 break;
         }
     }
