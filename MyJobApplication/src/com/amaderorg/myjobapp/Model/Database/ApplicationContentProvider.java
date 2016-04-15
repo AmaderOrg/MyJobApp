@@ -101,6 +101,11 @@ public class ApplicationContentProvider extends ContentProvider {
         return 0;
     }
 
+    /**
+     * Getter method for the satabase
+     *
+     * @return SQLite database
+     */
     public SQLiteDatabase getDatabase () {
         return mSQLiteDatabase;
     }

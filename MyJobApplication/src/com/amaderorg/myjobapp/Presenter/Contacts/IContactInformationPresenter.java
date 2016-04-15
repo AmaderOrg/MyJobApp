@@ -1,22 +1,16 @@
 package com.amaderorg.myjobapp.Presenter.Contacts;
 
+import com.amaderorg.myjobapp.Model.Database.Tables.Contact;
+
 /**
- * Created by souvi_000 on 3/28/2016.
+ * Contact information presenter
  */
 public interface IContactInformationPresenter {
 
     /**
-     * Adding sender information to the database
+     * Adding contact information to the database
      *
-     * @param firstName : first name
-     * @param lastName  : last name
-     * @param company   : company name
-     * @param location  : location
-     * @param email     : email id
+     * @param contact : contact information for a person
      */
-    void addSenderInformation(String firstName,
-                              String lastName,
-                              String company,
-                              int location,
-                              String email);
+    void addContactInformation(Contact contact);
 }

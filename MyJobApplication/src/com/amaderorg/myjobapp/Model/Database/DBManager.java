@@ -5,14 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.amaderorg.myjobapp.Model.Database.Tables.ContactInformation;
+import com.amaderorg.myjobapp.Model.Database.Tables.Contact;
 import com.amaderorg.myjobapp.Model.Database.Tables.ContactsTableSchema.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by souvi_000 on 3/28/2016.
+ * Database manager provides methods to perform SQL operations of the database tables
  */
 public class DBManager {
     private static SQLiteDatabase mSQLiteDatabase;
@@ -23,33 +23,43 @@ public class DBManager {
         mSQLiteDatabase = applicationContentProvider.getDatabase();
     }
 
-    public void addSenderContact(ContactInformation sender) {
+    /**
+     * This method helps adding a Contact information in the database
+     *
+     * @param contactInformation : Contact information
+     */
+    public void addContact(Contact contactInformation) {
        // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(ContactEntry.FIRST_NAME, sender.getFirstName());
-        values.put(ContactEntry.LAST_NAME, sender.getLastName());
-        values.put(ContactEntry.COMPANY, sender.getCompanyName());
-        values.put(ContactEntry.LOCATION, sender.getLocation());
-        values.put(ContactEntry.EMAIL_ID, sender.getEmailId());
+        values.put(ContactEntry.FIRST_NAME, contactInformation.getFirstName());
+        values.put(ContactEntry.LAST_NAME, contactInformation.getLastName());
+        values.put(ContactEntry.COMPANY, contactInformation.getCompanyName());
+        values.put(ContactEntry.LOCATION, contactInformation.getLocation());
+        values.put(ContactEntry.EMAIL_ADDRESS, contactInformation.getEmailAddress());
 
         // Insert the new row, returning the primary key value of the new row
         mContext.getContentResolver().insert(ApplicationContentProvider.CONTACTS_TABLE_URI, values);
     }
 
-    public List<ContactInformation> getAllSenderContacts() {
-        List<ContactInformation> list = new ArrayList<ContactInformation>();
+    /**
+     * This methods helps to retrieve all contact information from the database
+     *
+     * @return list of all contact information from the database
+     */
+    public List<Contact> getAllContacts() {
+        List<Contact> list = new ArrayList<Contact>();
         String query = "Select * From "+ ContactEntry.TABLE_NAME;
 
         Cursor cursor = mSQLiteDatabase.rawQuery(query, null);
 
         if (cursor.moveToFirst()){
             while(!cursor.isAfterLast()){
-                ContactInformation sender = new ContactInformation();
+                Contact sender = new Contact();
                 sender.setFirstName(cursor.getString(cursor.getColumnIndex(ContactEntry.FIRST_NAME)));
                 sender.setLastName(cursor.getString(cursor.getColumnIndex(ContactEntry.LAST_NAME)));
                 sender.setCompanyName(cursor.getString(cursor.getColumnIndex(ContactEntry.COMPANY)));
                 sender.setLocation(cursor.getInt(cursor.getColumnIndex(ContactEntry.LOCATION)));
-                sender.setEmailId(cursor.getString(cursor.getColumnIndex(ContactEntry.EMAIL_ID)));
+                sender.setEmailId(cursor.getString(cursor.getColumnIndex(ContactEntry.EMAIL_ADDRESS)));
                 list.add(sender);
                 // do what ever you want here
                 cursor.moveToNext();
