@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Workflow selection view.
  */
-public class WorkflowSelectionView extends RelativeLayout {
+public class WorkflowSelectionView extends RelativeLayout implements IWorkflowSelectionView {
     /**
      * Context.
      */
@@ -31,7 +31,11 @@ public class WorkflowSelectionView extends RelativeLayout {
     private OnClickListener mOnClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            mWorkflowSelectionListener.onWorkflowSelect(mMapIdAndActionString.get(v.getId()));
+            if (mWorkflowSelectionListener != null) {
+                mWorkflowSelectionListener.onWorkflowSelect(mMapIdAndActionString.get(v.getId()));
+            } else {
+                System.out.println("No one to notify that a workflow is selected.");
+            }
         }
     };
 
@@ -40,20 +44,19 @@ public class WorkflowSelectionView extends RelativeLayout {
      *
      * @param context Context.
      */
-    public WorkflowSelectionView(Context context, IWorkflowSelectionListener listener) {
+    public WorkflowSelectionView(Context context) {
         super(context);
         mContext = context;
         mMapIdAndActionString.put(R.id.manage_templates, getResources().getString(R.string.manage_templates));
         mMapIdAndActionString.put(R.id.send_email, getResources().getString(R.string.send_email));
         mMapIdAndActionString.put(R.id.manage_contacts, getResources().getString(R.string.manage_contacts));
-        mWorkflowSelectionListener = listener;
     }
 
     /**
      * Constructor.
      *
      * @param context Context.
-     * @param attrs Attributes.
+     * @param attrs   Attributes.
      */
     public WorkflowSelectionView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -62,8 +65,8 @@ public class WorkflowSelectionView extends RelativeLayout {
     /**
      * Constructor.
      *
-     * @param context Context.
-     * @param attrs Attributes
+     * @param context      Context.
+     * @param attrs        Attributes
      * @param defStyleAttr Definition style attributes.
      */
     public WorkflowSelectionView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -73,13 +76,23 @@ public class WorkflowSelectionView extends RelativeLayout {
     /**
      * Constructor.
      *
-     * @param context Context.
-     * @param attrs Attributes.
+     * @param context      Context.
+     * @param attrs        Attributes.
      * @param defStyleAttr Definition style attributes.
-     * @param defStyleRes Definition style resources.
+     * @param defStyleRes  Definition style resources.
      */
     public WorkflowSelectionView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    /**
+     * Sets the workflow selection listener.
+     *
+     * @param listener Workflow selection listener.
+     */
+    @Override
+    public void setWorkflowSelectionListener(IWorkflowSelectionListener listener) {
+        mWorkflowSelectionListener = listener;
     }
 
     /**
@@ -87,6 +100,7 @@ public class WorkflowSelectionView extends RelativeLayout {
      *
      * @return The view that it inflates.
      */
+    @Override
     public View getView() {
         View view = inflate(mContext, R.layout.workflow_selection, this);
         // Set up listeners
