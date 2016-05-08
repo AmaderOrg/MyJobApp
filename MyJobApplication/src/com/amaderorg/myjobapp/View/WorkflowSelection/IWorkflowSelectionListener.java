@@ -9,5 +9,5 @@ public interface IWorkflowSelectionListener {
      *
      * @param action Name of the action to be performed on workflow select.
      */
-    public void onWorkflowSelect(String action);
+    void onWorkflowSelect(String action);
 }

@@ -19,6 +19,7 @@ public class LaunchActivityTest extends ActivityInstrumentationTestCase2<LaunchA
 
     public LaunchActivityTest() {
         super("com.amaderorg.myjobapp", LaunchActivity.class);
+
     }
 
 }

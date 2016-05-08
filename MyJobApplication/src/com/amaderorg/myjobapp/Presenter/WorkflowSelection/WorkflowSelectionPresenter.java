@@ -42,10 +42,12 @@ public class WorkflowSelectionPresenter implements IWorkflowSelectionListener {
     /**
      * Constructor.
      *
-     * @param context Context.
-     * @param view    Workflow selection view that this presenter will have logic for.
+     * @param context  Context.
+     * @param view     Workflow selection view that this presenter will have logic for.
+     * @param listener Workflow selection presenter listener.
      */
-    public WorkflowSelectionPresenter(Context context, IWorkflowSelectionView view, IWorkflowSelectionPresenterListener listener) {
+    public WorkflowSelectionPresenter(Context context, IWorkflowSelectionView view,
+                                      IWorkflowSelectionPresenterListener listener) {
         mContext = context;
         mView = view;
         mWorkflowSelectionPresenterListener = listener;

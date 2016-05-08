@@ -18,5 +18,5 @@ public interface IWorkflowSelectionView {
      *
      * @return The view that it inflates.
      */
-    public View getView();
+    View getView();
 }
