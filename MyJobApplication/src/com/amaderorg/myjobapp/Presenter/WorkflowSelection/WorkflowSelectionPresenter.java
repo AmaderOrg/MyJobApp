@@ -3,10 +3,6 @@ package com.amaderorg.myjobapp.Presenter.WorkflowSelection;
 import android.content.Context;
 import android.content.Intent;
 import com.amaderorg.myjobapp.Model.Constants.Constants;
-import com.amaderorg.myjobapp.R;
-import com.amaderorg.myjobapp.View.Contacts.ManageContactsActivity;
-import com.amaderorg.myjobapp.View.MassEmail.MassEmailActivity;
-import com.amaderorg.myjobapp.View.Templates.ManageTemplatesActivity;
 import com.amaderorg.myjobapp.View.WorkflowSelection.IWorkflowSelectionListener;
 import com.amaderorg.myjobapp.View.WorkflowSelection.IWorkflowSelectionPresenterListener;
 import com.amaderorg.myjobapp.View.WorkflowSelection.IWorkflowSelectionView;
@@ -47,23 +43,24 @@ public class WorkflowSelectionPresenter implements IWorkflowSelectionListener {
      * @param listener Workflow selection presenter listener.
      */
     public WorkflowSelectionPresenter(Context context, IWorkflowSelectionView view,
-                                      IWorkflowSelectionPresenterListener listener) {
+                                      IWorkflowSelectionPresenterListener listener, Map<String, Class> activityMap) {
+        if (context == null) {
+            throw new RuntimeException("Context cannot be null");
+        }
+        if (view == null) {
+            throw new RuntimeException("View cannot be null");
+        }
+        if (listener == null) {
+            throw new RuntimeException("Workflow selection presenter listener cannot be null");
+        }
+        if (activityMap == null) {
+            throw new RuntimeException("Activity map cannot be null");
+        }
         mContext = context;
         mView = view;
         mWorkflowSelectionPresenterListener = listener;
-        if (mView != null) {
-            mView.setWorkflowSelectionListener(this);
-        }
-        populateMap();
-    }
-
-    /**
-     * This populates the map between action and their corresponding activities.
-     */
-    private void populateMap() {
-        mMapActionAndActivity.put(mContext.getString(R.string.manage_templates), ManageTemplatesActivity.class);
-        mMapActionAndActivity.put(mContext.getString(R.string.send_email), MassEmailActivity.class);
-        mMapActionAndActivity.put(mContext.getString(R.string.manage_contacts), ManageContactsActivity.class);
+        mMapActionAndActivity = activityMap;
+        mView.setWorkflowSelectionListener(this);
     }
 
     /**
@@ -74,9 +71,7 @@ public class WorkflowSelectionPresenter implements IWorkflowSelectionListener {
     private void chooseActivity(String action) {
         Intent intent = new Intent(mContext, mMapActionAndActivity.get(action));
         intent.putExtra(Constants.ACTION_NAME, action);
-        if (mWorkflowSelectionPresenterListener != null) {
-            mWorkflowSelectionPresenterListener.startIntent(intent);
-        }
+        mWorkflowSelectionPresenterListener.startIntent(intent);
     }
 
     /**

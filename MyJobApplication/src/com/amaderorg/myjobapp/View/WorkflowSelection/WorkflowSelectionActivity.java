@@ -5,6 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.amaderorg.myjobapp.Presenter.WorkflowSelection.WorkflowSelectionPresenter;
+import com.amaderorg.myjobapp.R;
+import com.amaderorg.myjobapp.View.Contacts.ManageContactsActivity;
+import com.amaderorg.myjobapp.View.MassEmail.MassEmailActivity;
+import com.amaderorg.myjobapp.View.Templates.ManageTemplatesActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Workflow selection activity.
@@ -18,6 +25,10 @@ public class WorkflowSelectionActivity extends Activity implements IWorkflowSele
      * Workflow selection presenter.
      */
     private WorkflowSelectionPresenter mPresenter;
+    /**
+     * Map between action and activity.
+     */
+    private Map<String, Class> mMapActionAndActivity = new HashMap<>();
 
     /**
      * Called when the activity is starting.  This is where most initialization
@@ -48,9 +59,20 @@ public class WorkflowSelectionActivity extends Activity implements IWorkflowSele
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         IWorkflowSelectionView workflowSelectionView = new WorkflowSelectionView(getApplicationContext());
-        mPresenter = new WorkflowSelectionPresenter(this, workflowSelectionView, this);
+        populateMap();
+        mPresenter = new WorkflowSelectionPresenter(this, workflowSelectionView, this, mMapActionAndActivity);
         mView = workflowSelectionView.getView();
         setContentView(mView);
+    }
+
+
+    /**
+     * This populates the map between action and their corresponding activities.
+     */
+    private void populateMap() {
+        mMapActionAndActivity.put(getString(R.string.manage_templates), ManageTemplatesActivity.class);
+        mMapActionAndActivity.put(getString(R.string.send_email), MassEmailActivity.class);
+        mMapActionAndActivity.put(getString(R.string.manage_contacts), ManageContactsActivity.class);
     }
 
     /**
