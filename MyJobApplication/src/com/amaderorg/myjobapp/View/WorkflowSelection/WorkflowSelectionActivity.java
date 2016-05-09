@@ -65,7 +65,6 @@ public class WorkflowSelectionActivity extends Activity implements IWorkflowSele
         setContentView(mView);
     }
 
-
     /**
      * This populates the map between action and their corresponding activities.
      */

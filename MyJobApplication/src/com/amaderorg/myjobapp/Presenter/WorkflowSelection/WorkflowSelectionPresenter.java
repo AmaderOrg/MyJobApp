@@ -38,9 +38,10 @@ public class WorkflowSelectionPresenter implements IWorkflowSelectionListener {
     /**
      * Constructor.
      *
-     * @param context  Context.
-     * @param view     Workflow selection view that this presenter will have logic for.
-     * @param listener Workflow selection presenter listener.
+     * @param context     Context.
+     * @param view        Workflow selection view that this presenter will have logic for.
+     * @param listener    Workflow selection presenter listener.
+     * @param activityMap Map between the action and the corresponding activity.
      */
     public WorkflowSelectionPresenter(Context context, IWorkflowSelectionView view,
                                       IWorkflowSelectionPresenterListener listener, Map<String, Class> activityMap) {
