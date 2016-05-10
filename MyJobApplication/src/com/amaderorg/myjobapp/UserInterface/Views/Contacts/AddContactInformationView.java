@@ -7,6 +7,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.amaderorg.myjobapp.R;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * Created by souvi_000 on 3/28/2016.
  */
-public class AddContactInformationView extends LinearLayout {
+public class AddContactInformationView extends RelativeLayout {
     private static final String EMPTY_STRING = "";
 
     private Button mAddSenderInfoButton;

@@ -10,5 +10,5 @@
     <dimen name="text_button_padding">15dp</dimen>
     <dimen name="text_button_margin">15dp</dimen>
     <dimen name="button_side_margin">5dp</dimen>
-    <dimen name="view_bottom_margin_for_buttons">55dp</dimen>
+    <dimen name="view_bottom_margin_for_buttons">70dp</dimen>
 </resources>
