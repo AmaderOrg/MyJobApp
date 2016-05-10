@@ -14,15 +14,17 @@ import com.amaderorg.myjobapp.Model.Database.Tables.Contact;
 import com.amaderorg.myjobapp.Presenter.Contacts.IContactInformationPresenter;
 import com.amaderorg.myjobapp.Presenter.Contacts.ContactInformationPresenter;
 import com.amaderorg.myjobapp.R;
-import com.amaderorg.myjobapp.UserInterface.Views.Contacts.EditContactInformationView;
+import com.amaderorg.myjobapp.UserInterface.Views.Contacts.AddContactInformationView;
+import com.amaderorg.myjobapp.UserInterface.Views.Contacts.ContactInformationSummaryView;
 import com.amaderorg.myjobapp.UserInterface.Views.Contacts.ContactInformationView;
 
 /**
  * Created by souvi_000 on 3/28/2016.
  */
 public class ContactsFragment extends Fragment implements Button.OnClickListener {
-    private ContactInformationView mSenderDetailsView;
-    private EditContactInformationView mAddSenderView;
+    private ContactInformationView mContactDetailsView;
+    private AddContactInformationView mAddSenderView;
+    private ContactInformationSummaryView mContactSummaryView;
     private Context mContext;
     private ViewGroup mContainer;
     private IContactInformationPresenter mSenderInfoPresenter;
@@ -36,6 +38,7 @@ public class ContactsFragment extends Fragment implements Button.OnClickListener
     private String mCompanyName;
     private int mLocation;
     private String mEmailId;
+    private Contact mCurrentContact;
 
     @Override
     public void onCreate (Bundle savedInstanceState){
@@ -47,7 +50,7 @@ public class ContactsFragment extends Fragment implements Button.OnClickListener
     public void onResume() {
         super.onResume();
         // refresh view
-        mSenderDetailsView.populateContactList(mSenderInfoPresenter.getContactList());
+        mContactDetailsView.populateContactList(mSenderInfoPresenter.getContactList());
     }
 
     @Override
@@ -55,12 +58,14 @@ public class ContactsFragment extends Fragment implements Button.OnClickListener
         View mainView;
         mainView = inflater.inflate(R.layout.contacts_frag,container,false);
         initTextWatchers();
-        mSenderDetailsView = new ContactInformationView(mContext);
-        mAddSenderView = new EditContactInformationView(mContext);
+        mContactDetailsView = new ContactInformationView(mContext);
+        mAddSenderView = new AddContactInformationView(mContext);
+        mContactSummaryView = new ContactInformationSummaryView(mContext);
         mContainer = (ViewGroup)mainView.findViewById(R.id.rl_contacts_container);
-        mContainer.addView(mSenderDetailsView);
-        mSenderDetailsView.addButtonClickListener(this);
+        mContainer.addView(mContactDetailsView);
+        mContactDetailsView.addButtonClickListener(this);
         mAddSenderView.addButtonClickListener(this);
+        mContactSummaryView.addButtonClickListener(this);
         mSenderInfoPresenter = new ContactInformationPresenter(mContext);
         mAddSenderView.addTextWatchers(mFirstNameWatcher,
                 mLastNameWatcher,
@@ -173,20 +178,37 @@ public class ContactsFragment extends Fragment implements Button.OnClickListener
                 mContainer.addView(mAddSenderView);
                 break;
             case R.id.button_add_sender_info:
-                mSenderInfoPresenter.addContactInformation(getContactObject(mFirstName,
+                mContainer.removeAllViews();
+                mContainer.addView(mContactSummaryView);
+                mCurrentContact = getContactObject(mFirstName,
                         mLastName,
                         mCompanyName,
                         mLocation,
-                        mEmailId));
+                        mEmailId);
+                mContactSummaryView.populateContactInformation(mCurrentContact);
+                mAddSenderView.removeTextWatchers(); // removing text watches before clearing data
+                mAddSenderView.clearEditTextViews();
+                mAddSenderView.addTextWatchers(mFirstNameWatcher, mLastNameWatcher, mCompanyNameWatcher,
+                        mLocationWatcher, mEmailWatcher); // adding text watchers back
                 break;
             case R.id.button_cancel_sender_info:
                 mContainer.removeAllViews();
-                mContainer.addView(mSenderDetailsView);
-                mSenderDetailsView.populateContactList(mSenderInfoPresenter.getContactList());
+                mContainer.addView(mContactDetailsView);
+                mContactDetailsView.populateContactList(mSenderInfoPresenter.getContactList());
                 break;
             case R.id.button_cancel_contact_details:
                 getActivity().finish();
                 break;
+            case R.id.button_confirm_summary_contact:
+                mSenderInfoPresenter.addContactInformation(mCurrentContact);
+                mContainer.removeAllViews();
+                mContainer.addView(mContactDetailsView);
+                mContactDetailsView.populateContactList(mSenderInfoPresenter.getContactList());
+                break;
+            case R.id.button_cancel_summary_contact:
+                mContainer.removeAllViews();
+                mContainer.addView(mContactDetailsView);
+                mContactDetailsView.populateContactList(mSenderInfoPresenter.getContactList());
         }
     }
 

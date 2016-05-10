@@ -22,6 +22,10 @@
         <item name="android:textSize">@dimen/text_entry_size</item>
         <item name="android:layout_marginBottom">@dimen/text_entry_margin</item>
     </style>
+    <style name="text_value_style1">
+        <item name="android:textSize">@dimen/text_entry_size</item>
+        <item name="android:layout_marginBottom">@dimen/text_entry_margin</item>
+    </style>
     <style name="list_entry_style">
         <item name="android:textColor">@color/primary_button_text_color</item>
         <item name="android:textSize">@dimen/text_list_entry_size</item>

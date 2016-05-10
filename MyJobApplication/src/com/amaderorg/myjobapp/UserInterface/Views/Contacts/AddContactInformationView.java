@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.amaderorg.myjobapp.R;
 
@@ -15,7 +16,9 @@ import java.util.List;
 /**
  * Created by souvi_000 on 3/28/2016.
  */
-public class EditContactInformationView extends LinearLayout {
+public class AddContactInformationView extends LinearLayout {
+    private static final String EMPTY_STRING = "";
+
     private Button mAddSenderInfoButton;
     private Button mCancelSenderInfoButton;
     private EditText mFirstName;
@@ -25,7 +28,11 @@ public class EditContactInformationView extends LinearLayout {
     private EditText mEmailId;
     private List<OnClickListener> mListeners;
 
-    public EditContactInformationView(Context context) {
+    private TextWatcher mFirstNameWatcher, mLastNameWatcher,
+    mCompanyNameWatcher, mLocationWatcher,
+    mEmailWatcher;
+
+    public AddContactInformationView(Context context) {
         super(context);
         View view = View.inflate(context, R.layout.add_sender_info_view, this);
 
@@ -69,6 +76,11 @@ public class EditContactInformationView extends LinearLayout {
     public void addTextWatchers(TextWatcher firstNameWatcher, TextWatcher lastNameWatcher,
                                 TextWatcher companyNameWatcher, TextWatcher locationWatcher,
                                 TextWatcher emailWatcher) {
+        mFirstNameWatcher = firstNameWatcher;
+        mLastNameWatcher = lastNameWatcher;
+        mCompanyNameWatcher = companyNameWatcher;
+        mLocationWatcher = locationWatcher;
+        mEmailWatcher = emailWatcher;
         if (mFirstName != null) {
             mFirstName.addTextChangedListener(firstNameWatcher);
         }
@@ -84,5 +96,25 @@ public class EditContactInformationView extends LinearLayout {
         if (mEmailId != null) {
             mEmailId.addTextChangedListener(emailWatcher);
         }
+    }
+
+    public void removeTextWatchers() {
+        mFirstName.removeTextChangedListener(mFirstNameWatcher);
+        mLastName.removeTextChangedListener(mLastNameWatcher);
+        mCompanyName.removeTextChangedListener(mCompanyNameWatcher);
+        mLocation.removeTextChangedListener(mLocationWatcher);
+        mEmailId.removeTextChangedListener(mEmailWatcher);
+    }
+
+    /**
+     * Clearing all editable fields in the form
+     */
+    public void clearEditTextViews() {
+        mFirstName.setText(EMPTY_STRING);
+        mLastName.setText(EMPTY_STRING);
+        mCompanyName.setText(EMPTY_STRING);
+//        mLocation.setHint("");
+        mLocation.setText("", TextView.BufferType.EDITABLE);
+        mEmailId.setText(EMPTY_STRING);
     }
 }

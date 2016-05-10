@@ -58,6 +58,8 @@
         android:id="@+id/et_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint=""
+        android:inputType="number"
         style="@style/text_entry_style1"/>
     <!-- Email id-->
     <TextView
@@ -70,6 +72,7 @@
         android:id="@+id/et_email_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
         style="@style/text_entry_style1"/>
     </LinearLayout>
     <LinearLayout
