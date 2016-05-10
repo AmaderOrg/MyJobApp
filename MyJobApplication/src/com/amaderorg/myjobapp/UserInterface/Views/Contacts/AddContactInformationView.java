@@ -3,6 +3,7 @@ package com.amaderorg.myjobapp.UserInterface.Views.Contacts;
 import android.content.Context;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -28,9 +29,14 @@ public class AddContactInformationView extends LinearLayout {
     private EditText mEmailId;
     private List<OnClickListener> mListeners;
 
+    /**
+     * Text watchers
+     */
     private TextWatcher mFirstNameWatcher, mLastNameWatcher,
     mCompanyNameWatcher, mLocationWatcher,
     mEmailWatcher;
+
+
 
     public AddContactInformationView(Context context) {
         super(context);
@@ -68,11 +74,23 @@ public class AddContactInformationView extends LinearLayout {
         }
     }
 
-
+    /**
+     * This method adds button click listener
+     * @param listener listener
+     */
     public void addButtonClickListener(View.OnClickListener listener) {
         mListeners.add(listener);
     }
 
+    /**
+     * Adding text watchers on edittext
+     *
+     * @param firstNameWatcher   : first name text watcher
+     * @param lastNameWatcher    : last name text watcher
+     * @param companyNameWatcher : company name text watcher
+     * @param locationWatcher    : location text watcher
+     * @param emailWatcher       : email id text watcher
+     */
     public void addTextWatchers(TextWatcher firstNameWatcher, TextWatcher lastNameWatcher,
                                 TextWatcher companyNameWatcher, TextWatcher locationWatcher,
                                 TextWatcher emailWatcher) {
@@ -98,6 +116,9 @@ public class AddContactInformationView extends LinearLayout {
         }
     }
 
+    /**
+     * This method removes all edittext watchers
+     */
     public void removeTextWatchers() {
         mFirstName.removeTextChangedListener(mFirstNameWatcher);
         mLastName.removeTextChangedListener(mLastNameWatcher);
@@ -113,7 +134,6 @@ public class AddContactInformationView extends LinearLayout {
         mFirstName.setText(EMPTY_STRING);
         mLastName.setText(EMPTY_STRING);
         mCompanyName.setText(EMPTY_STRING);
-//        mLocation.setHint("");
         mLocation.setText("", TextView.BufferType.EDITABLE);
         mEmailId.setText(EMPTY_STRING);
     }

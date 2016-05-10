@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import com.amaderorg.myjobapp.Model.Database.Tables.Contact;
@@ -72,6 +73,14 @@ public class ContactsFragment extends Fragment implements Button.OnClickListener
                 mCompanyNameWatcher,
                 mLocationWatcher,
                 mEmailWatcher);
+//        InputMethodManager imm = (InputMethodManager) getActivity()
+//                .getSystemService(Context.INPUT_METHOD_SERVICE);
+//
+//        if (imm.isAcceptingText()) {
+//            writeToLog("Software Keyboard was shown");
+//        } else {
+//            writeToLog("Software Keyboard was not shown");
+//        }
 
         return mainView;
     }

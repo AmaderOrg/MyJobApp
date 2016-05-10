@@ -5,9 +5,9 @@
     <string name="add_sender_info_label">Add Sender Information</string>
 
     <!-- Contact Fragment strings -->
-    <string name="first_name_label">First Name&#42;:</string>
-    <string name="last_name_label">Last Name&#42;:</string>
-    <string name="email_address_label">Email Address&#42;:</string>
+    <string name="first_name_label">First Name:</string>
+    <string name="last_name_label">Last Name:</string>
+    <string name="email_address_label">Email Address:</string>
     <string name="company_label">Company:</string>
     <string name="location_label">Location:</string>
     <string name="add_button_text">ADD</string>
