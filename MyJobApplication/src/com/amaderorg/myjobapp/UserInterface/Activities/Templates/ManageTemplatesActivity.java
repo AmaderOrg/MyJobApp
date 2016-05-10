@@ -1,15 +1,15 @@
-package com.amaderorg.myjobapp.View.Contacts;
+package com.amaderorg.myjobapp.UserInterface.Activities.Templates;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
-import com.amaderorg.myjobapp.Model.Constants.Constants;
+import com.amaderorg.myjobapp.Model.Constants.CommonConstants;
 import com.amaderorg.myjobapp.R;
 
 /**
  * Please remember to update the class description when this feature is implemented.
  */
-public class ManageContactsActivity extends Activity {
+public class ManageTemplatesActivity extends Activity {
     /**
      * Called when the activity is starting.  This is where most initialization
      * should go: calling {@link #setContentView(int)} to inflate the
@@ -39,7 +39,7 @@ public class ManageContactsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Toast.makeText(getApplicationContext(), getIntent().getExtras().getString(Constants.ACTION_NAME),
+        Toast.makeText(getApplicationContext(), getIntent().getExtras().getString(CommonConstants.ACTION_NAME),
                 Toast.LENGTH_SHORT).show();
     }
 }

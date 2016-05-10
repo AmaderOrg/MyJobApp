@@ -33,11 +33,8 @@ public class ApplicationContentProvider extends ContentProvider {
      * Holds Uri code
      */
     private static final int CONTACTS_URI_CODE = 1;
-
-    /**
-     * Uri matcher to help matching Uris
-     */
     private static final UriMatcher URI_MATCHER;
+
     static {
         URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
         URI_MATCHER.addURI(PROVIDER_NAME, ContactsTableSchema.ContactEntry.TABLE_NAME, CONTACTS_URI_CODE);

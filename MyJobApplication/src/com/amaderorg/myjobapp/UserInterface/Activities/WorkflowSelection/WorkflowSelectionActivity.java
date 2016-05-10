@@ -1,14 +1,16 @@
-package com.amaderorg.myjobapp.View.WorkflowSelection;
+package com.amaderorg.myjobapp.UserInterface.Activities.WorkflowSelection;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import com.amaderorg.myjobapp.Model.Constants.Constants;
+import com.amaderorg.myjobapp.Model.Constants.CommonConstants;
 import com.amaderorg.myjobapp.R;
-import com.amaderorg.myjobapp.View.Contacts.ManageContactsActivity;
-import com.amaderorg.myjobapp.View.MassEmail.MassEmailActivity;
-import com.amaderorg.myjobapp.View.Templates.ManageTemplatesActivity;
+import com.amaderorg.myjobapp.Presenter.WorkflowSelection.IWorkflowSelectionListener;
+import com.amaderorg.myjobapp.UserInterface.Views.WorkflowSelection.WorkflowSelectionView;
+import com.amaderorg.myjobapp.UserInterface.Activities.Contacts.ManageContactsActivity;
+import com.amaderorg.myjobapp.UserInterface.Activities.MassEmail.MassEmailActivity;
+import com.amaderorg.myjobapp.UserInterface.Activities.Templates.ManageTemplatesActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -87,7 +89,7 @@ public class WorkflowSelectionActivity extends Activity {
      */
     private void chooseActivity(String action) {
         Intent intent = new Intent(WorkflowSelectionActivity.this, mMapActionAndActivity.get(action));
-        intent.putExtra(Constants.ACTION_NAME, action);
+        intent.putExtra(CommonConstants.ACTION_NAME, action);
         startActivity(intent);
     }
 }

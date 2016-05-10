@@ -12,6 +12,7 @@
     <string name="location_label">Location:</string>
     <string name="add_button_text">ADD</string>
     <string name="cancel_button_text">CANCEL</string>
+    <string name="confirm_button_text">CONFIRM</string>
 
     <!-- Workflow selection strings -->
     <string name="manage_templates">Manage Templates</string>

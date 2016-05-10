@@ -1,9 +1,9 @@
-package com.amaderorg.myjobapp.View.MassEmail;
+package com.amaderorg.myjobapp.UserInterface.Activities.MassEmail;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
-import com.amaderorg.myjobapp.Model.Constants.Constants;
+import com.amaderorg.myjobapp.Model.Constants.CommonConstants;
 import com.amaderorg.myjobapp.R;
 
 /**
@@ -39,7 +39,7 @@ public class MassEmailActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Toast.makeText(getApplicationContext(), getIntent().getExtras().getString(Constants.ACTION_NAME),
+        Toast.makeText(getApplicationContext(), getIntent().getExtras().getString(CommonConstants.ACTION_NAME),
                 Toast.LENGTH_SHORT).show();
     }
 }
